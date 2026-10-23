@@ -1,19 +1,19 @@
+from collections import deque
+
 def solution(s):
     answer = True
+    left = []
     
-    s = list(s)
-    a = []
+    q = deque()
     
-    for i in range(len(s)):
-        if s[i] == '(':
-            a.append(s[i])
-        else:
-            if a:
-                a.pop()
-            else:
-                return False
-            
-    if not a:
-        return True
-    else: 
+    for i in s:
+        if i == ')' and not left:
+            return False
+        if i == '(':
+            left.append('(')
+        if i == ')' and left:
+            left.pop()
+
+    if left:
         return False
+    return answer
