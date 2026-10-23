@@ -1,14 +1,14 @@
 def solution(s):
     answer = 0
-    stack = list()
-    
+    list = []
     for i in s:
-        if stack and stack[-1] == i:
-            stack.pop()
+        if list:
+            if list[-1]==i:
+                list.pop(-1)
+            else:
+                list.append(i)
         else:
-            stack.append(i)
-    
-    if not stack:
-        answer = 1
-    
+            list.append(i)
+    if not list:
+        answer=1
     return answer
